@@ -360,6 +360,16 @@ lakehouse_url_items = f"https://onelake.dfs.fabric.microsoft.com/{workspace_guid
 print("Your OneLake URL for FactSales (copy for COPY INTO, etc):\n", lakehouse_url_sales)
 print("Your OneLake URL for FactSalesLineItems (copy for COPY INTO, etc):\n", lakehouse_url_items)
 
+************
+Reading cosmos db from sql endpoint 
+
+SELECT
+JSON_VALUE(c.preferences, '$.favoriteDrink') AS drink,
+COUNT(1) AS customerCount
+FROM [fc_commerce_cosmos].[fc_commerce_cosmos].[customers] AS c
+GROUP BY JSON_VALUE(c.preferences, '$.favoriteDrink')
+ORDER BY COUNT(1) DESC
+
 
 
 
